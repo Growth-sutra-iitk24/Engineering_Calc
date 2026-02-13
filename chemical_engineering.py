@@ -1,52 +1,94 @@
-# Chemical Engineering and Process Design Calculations
+# Comprehensive Chemical Engineering Calculations
 
-## 1. Stoichiometry
-### Stoichiometric Calculations
-- Calculate amounts of reactants and products in a chemical reaction based on the balanced equation.
+## 1. Material Balance
 
-## 2. Reactor Design
-### Ideal Reactors
-- Calculate volumes and residence times for various reactor types.
+### Formula
+```
+Input = Output + Accumulation
+```
+### Implementation
+```python
+def material_balance(input_flow, output_flow, accumulation):
+    return input_flow - output_flow - accumulation
+```
 
-## 3. Mass Balance
-### General Mass Balance Equation
-- Input: Inlet, Outlet, Generation, Consumption
-- Output: Accumulation
+## 2. Energy Balance
 
-## 4. Heat Balance
-### Heat Transfer Calculations
-- Calculate heat transfer using conduction, convection, and radiation formulas.
+### Formula
+```
+Energy_{in} = Energy_{out} + Energy_{accumulated}
+```
+### Implementation
+```python
+def energy_balance(energy_in, energy_out, energy_accumulated):
+    return energy_in - energy_out - energy_accumulated
+```
 
-## 5. Thermodynamics
-### Thermodynamic Laws
-- Apply the first and second laws of thermodynamics to system calculations.
+## 3. Reaction Kinetics
 
-## 6. Distillation
-### Distillation Column Design
-- Calculate the number of theoretical plates and reflux ratio.
+### Formula
+```
+Rate = k [A]^m [B]^n
+```
+### Implementation
+```python
+def reaction_kinetics(k, A, B, m, n):
+    return k * (A ** m) * (B ** n)
+```
 
-## 7. Absorption
-### Absorption Column Design
-- Calculate mass transfer coefficients and column height.
+## 4. Heat Transfer
 
-## 8. Adsorption
-### Adsorption Isotherms
-- Determine the equilibrium relationship between adsorbate concentration and amount adsorbed.
+### Formula
+```
+Q = U A (T_{hot} - T_{cold})
+```
+### Implementation
+```python
+def heat_transfer(U, A, T_hot, T_cold):
+    return U * A * (T_hot - T_cold)
+```
 
-## 9. Fluid Mechanics for Pipes
-### Pipe Flow Calculations
-- Calculate flow rates, head loss, and Reynolds number for various flow regimes.
+## 5. Fluid Flow
 
-## 10. Pump Calculations
-### Pump Performance Curves
-- Determine pump power requirements and efficiency.
+### Formula
+```
+h = f rac{L}{D} rac{ho v^2}{2g}
+```
+### Implementation
+```python
+def fluid_flow(f, L, D, rho, v, g):
+    return f * (L / D) * (rho * (v ** 2)) / (2 * g)
+```
 
-## 11. Heat Exchanger Design
-### Heat Exchanger Calculations
-- Calculate overall heat transfer coefficient and log mean temperature difference (LMTD).
+## 6. Mass Transfer
 
-## 12. Process Safety Calculations
-### Safety Factor Analysis
-- Assess process safety through various risk assessment calculations.
+### Formula
+```
+Mass_{transfer} = k_{L} A (C_{s} - C_{L})
+```
+### Implementation
+```python
+def mass_transfer(k_L, A, C_s, C_L):
+    return k_L * A * (C_s - C_L)
+```
 
----
+# Example Usage
+
+if __name__ == '__main__':
+    # Material Balance Example
+    print(material_balance(100, 70, 5))
+
+    # Energy Balance Example
+    print(energy_balance(200, 180, 10))
+
+    # Reaction Kinetics Example
+    print(reaction_kinetics(0.1, 2, 3, 1, 1))
+
+    # Heat Transfer Example
+    print(heat_transfer(500, 10, 100, 20))
+
+    # Fluid Flow Example
+    print(fluid_flow(0.02, 100, 0.5, 1000, 3, 9.81))
+
+    # Mass Transfer Example
+    print(mass_transfer(0.5, 10, 5, 2))
